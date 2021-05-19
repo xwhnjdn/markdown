@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggle">改变图形宽度</button>
+        <transition name="box">
+            <div class="chat" v-if="show"></div>
+        </transition>
+    </div>
+    <style>
+    .chart{
+        width:200px;
+        height: 200px;
+        background-color: cyan;
+    }
+    .box-enter-active, .box-leave-active{
+        transition: width 3s;
+    }
+    .box-enter, .box-leave-to{
+        width:0px;
+    }
+    .box-enter-to, .box-leave{
+        width:200px;
+    }
+    </style>
+    <script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+           show:true,
+        },
+        methods:{
+            toggle(){
+              this.show=!this.show  
+            }
+        }
+    })
+    </script>
+</body>
+</html>
