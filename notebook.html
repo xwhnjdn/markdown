@@ -9,6 +9,10 @@
     <script src="https://unpkg.com/marked"></script>
     <style>
 
+    body{
+        margin: 0%;
+    }
+
     #notebook{
         display: flex;
     }
@@ -20,7 +24,7 @@
     }
 
     textarea{
-        width: 100%;
+        width: 98%;
         height: 100%;
         background-color: aquamarine;
     }
@@ -57,17 +61,29 @@
     <div id="notebook">
         <div class="notebook"></div>
         <div class="input">
-            <textarea></textarea>
+            <textarea v-model="content"></textarea>
         </div>
-        <div class="preview"></div>
+        <div class="preview" v-html="markdownPreview">
+        </div>
     </div>
 
     <script>
         const html=marked('# hello')
         console.log(html)
+        const html_strong=marked('**notice**')
+        console.log(html_strong)
         var vm=new Vue({
-            el:"#notebook"
+            el:"#notebook",
+            data:{
+                content:'text'
+            },
+            computed:{
+                markdownPreview(){
+                    return marked(this.content)
+                }
+            }
         })
+
     </script>
     
 </body>
