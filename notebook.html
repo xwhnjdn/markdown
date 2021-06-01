@@ -81,6 +81,12 @@
                 markdownPreview(){
                     return marked(this.content)
                 }
+            },
+            watch:{
+                content(val,oldval){
+                    console.log("new:",val,"old",oldval)
+
+                }
             }
         })
 
