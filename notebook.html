@@ -6,36 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown Editer</title>
     <script src="./lib/vue.js"></script>
+    <script src="https://unpkg.com/marked"></script>
     <style>
+
+    #notebook{
+        display: flex;
+    }
     .notebook,.input,.preview 
     {
     	/*border:1px solid red;*/
     	height: 1000px;
+        /* float: left; */
+    }
+
+    textarea{
+        width: 100%;
+        height: 100%;
+        background-color: aquamarine;
     }
 
     .notebook{
         background-color: bisque;
         width: 20%;
-        position: absolute;
+        /* position: absolute;
         left: 0%;
-        top: 0%;
+        top: 0%; */
 
     }
     .input{
         background-color: aquamarine;
         width: 40%;
-        position: absolute;
-        /* left: 20%; */
+        /* position: absolute; */
+        /* left: 20%;
         top: 0%;
-        float: left;
+        float: left; */
     }
     .preview{
         background-color: aqua;
         width: 40%;
-        position: absolute;
-        /* left: 60%; */
+        /* position: absolute; */
+        /* left: 60%;
         top: 0%;
-        float: right;
+        float: right; */
     }
  
 </style>
@@ -44,9 +56,19 @@
 <body>
     <div id="notebook">
         <div class="notebook"></div>
-        <div class="input"></div>
+        <div class="input">
+            <textarea></textarea>
+        </div>
         <div class="preview"></div>
     </div>
+
+    <script>
+        const html=marked('# hello')
+        console.log(html)
+        var vm=new Vue({
+            el:"#notebook"
+        })
+    </script>
     
 </body>
 </html>
